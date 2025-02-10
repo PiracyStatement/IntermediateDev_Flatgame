@@ -32,12 +32,12 @@ public class PlayerWalk : MonoBehaviour
 
         FlipSprite();
 
-        if ((Input.GetKeyDown(KeyCode.LeftArrow)) || (Input.GetKeyDown(KeyCode.RightArrow)))
+        if (((Input.GetKeyDown(KeyCode.LeftArrow)) && !(Input.GetKey(KeyCode.RightArrow))) || ((Input.GetKeyDown(KeyCode.RightArrow)) && !(Input.GetKey(KeyCode.LeftArrow))))
         {
             sounds[1].Play();
         }
 
-        if ((Input.GetKeyUp(KeyCode.LeftArrow)) || (Input.GetKeyUp(KeyCode.RightArrow)))
+        if (((Input.GetKeyUp(KeyCode.LeftArrow)) && !(Input.GetKey(KeyCode.RightArrow))) || ((Input.GetKeyUp(KeyCode.RightArrow)) && !(Input.GetKey(KeyCode.LeftArrow))))
         {
             sounds[1].Pause();
         }
@@ -52,6 +52,10 @@ public class PlayerWalk : MonoBehaviour
         else
         {
             PlayerVariables.isWalking = false;
+            if (UnityEngine.Random.Range(1, 6000) == 5999)
+            {
+                sounds[3].Play();
+            }
         }
     }
 
@@ -80,5 +84,9 @@ public class PlayerWalk : MonoBehaviour
         animator.SetFloat("xVelocity", 0);
         sounds[1].Pause();
         isPlanting = true;
+
+        animator.SetBool("isPlanting", true);
+        sounds[2].Play();
+        sounds[4].PlayDelayed(4);
     }
 }
