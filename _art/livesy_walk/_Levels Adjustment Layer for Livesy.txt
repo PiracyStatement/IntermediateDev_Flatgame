@@ -1,0 +1,5 @@
+Levels Adjustment Layer for Livesy:
+
+Black: 125
+Grey: 0.01
+White: 200
