@@ -87,6 +87,9 @@ public class PlayerWalk : MonoBehaviour
 
         animator.SetBool("isPlanting", true);
         sounds[2].Play();
-        sounds[4].PlayDelayed(4);
+        sounds[4].PlayDelayed(3.5f);
+        var cam = GameObject.Find("Main Camera").GetComponent<MoveCamera>();
+        cam.StartDelay();
+        sounds[5].PlayDelayed(5.5f);
     }
 }
